@@ -3,8 +3,8 @@ nlsy_cols <- c("glasses", "eyesight", "sleep_wkdy", "sleep_wknd",
 							 "income", "res_1980", "res_2002", "age_bir")
 
 library(tidyverse)
-#this doesn't work because I dont't have this path;
-setwd("~/Documents/Teaching/Emory/epi590r-in-class/data/raw/")
+#changed path name;
+setwd("/Users/shaynamatson/RStudio Projects/EPI 590R_R Bootcamp/epi590r-in-class/data/raw")
 nlsy <- read_csv("nlsy.csv",
 								 na = c("-1", "-2", "-3", "-4", "-5", "-998"),
 								 skip = 1, col_names = nlsy_cols)
