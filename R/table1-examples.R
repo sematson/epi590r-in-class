@@ -74,19 +74,24 @@ tbl_summary(
 		income ~ "Income",
 		missing_text = "Missing"
 	),
-	statistic = list(income ~ "10th Percentile = {p10}; 90th Percentile = {p90}",
-									 starts_with("sleep") ~ "min = {min}; max = {max}"),
-	digits = list(income ~ c(3, 3),
-								starts_with("sleep") ~ c(1, 1))
-	)
+	statistic = list(
+		income ~ "10th Percentile = {p10}, 90th Percentile = {p90}",
+		starts_with("sleep") ~ "min = {min}, max = {max}"
+		),
+	digits = list(
+		income ~ c(3, 3),
+		starts_with("sleep") ~ c(1, 1)
+		)) |>
+	add_p() |>
+	add_overall() |>
+	modify_table_styling(
+		columns = label,
+		rows = label == "Race/ethnicity",
+		footnote = "This is a footnote."
+		)
 
-	#add_p(test = list(all_continuous() ~ "t.test",
-											all_categorical() ~ "chisq.test")) |>
-	#add_overall(col_label = "**Total**") |>
-	bold_labels() |>
-	modify_footnote(race_eth_cat ~ "Race and ethnicity variables for household
-									members are based on information collected on the Household
-									Screener; in which race and one ethnic background for each
-									household member were recorded.") |>
-	modify_header(label = "**Variable**", p.value = "**P**")
+
+##################
+
+
 
